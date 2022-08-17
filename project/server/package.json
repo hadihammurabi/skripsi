@@ -1,0 +1,28 @@
+{
+  "name": "@ngasemjs/server-starter",
+  "version": "0.0.3",
+  "description": "NgasemJS starter template",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngasemjs/server-starter.git"
+  },
+  "keywords": [],
+  "author": "Hadi Hidayat Hammurabi <hadihammurabi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngasemjs/server-starter/issues"
+  },
+  "homepage": "https://github.com/ngasemjs/server-starter#readme",
+  "dependencies": {
+    "@ngasemjs/server-igniter": "0.0.34"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
