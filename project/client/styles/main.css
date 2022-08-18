@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+th,
+td {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-width: 1px;
+}
