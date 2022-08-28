@@ -44,7 +44,8 @@
               <th class="text-left">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-body">
+          <!-- 
             <tr>
               <td>asdasd</td>
               <td>asdasd</td>
@@ -61,7 +62,8 @@
                 </a>
                 <button class="bg-red-500 text-white rounded-md px-3 py-2">Hapus</button>
               </td>
-            </tr>
+            </tr> 
+          -->
           </tbody>
         </table>
 
@@ -71,6 +73,29 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/gh/ngasemjs/client-javascript@4202aa1/hamjs-rpc.js"></script>
+  <script src="/scripts/index.js"></script>
+  <script>
+    const tableBody = document.querySelector('#table-body');
+
+    function main() {
+      getAll()
+        .then(function(pegawais) {
+          if (pegawais.length <= 0) {
+            tableBody.innerHTML = `
+            <tr>
+              <td colspan="7" class="text-center">
+                Tidak ada data
+              </td>
+            </tr>
+            `;
+          }
+          console.log(pegawais);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', main);
+  </script>
 
 </body>
 </html>
