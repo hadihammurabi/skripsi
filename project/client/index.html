@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/_styles/main.css" />
 
   <title>Karyawan</title>
 </head>
@@ -74,23 +74,19 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/gh/ngasemjs/client-javascript@4202aa1/hamjs-rpc.js"></script>
-  <script src="/scripts/index.js"></script>
+  <script src="/_scripts/index.js"></script>
   <script>
     const tableBody = document.querySelector('#table-body');
-
     function main() {
+      tableBody.innerHTML = messageLoading;
       getAll()
         .then(function(pegawais) {
           if (pegawais.length <= 0) {
-            tableBody.innerHTML = `
-            <tr>
-              <td colspan="7" class="text-center">
-                Tidak ada data
-              </td>
-            </tr>
-            `;
+            tableBody.innerHTML = messageEmpty;
           }
-          console.log(pegawais);
+        })
+        .catch(err => {
+          tableBody.innerHTML = messageEmpty;
         });
     }
 
