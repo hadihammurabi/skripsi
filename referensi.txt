@@ -13,3 +13,5 @@ Mozilla, 2020
 https://iopscience.iop.org/article/10.1088/1742-6596/1362/1/012114/pdf
 (Dasari Hermitha Curie, 2019)
 
+https://books.google.co.id/books?hl=id&lr=&id=Qv9PCgAAQBAJ&oi=fnd&pg=PP1&dq=json&ots=g4FWQNXm-M&sig=s4p1kWQXmi68V8jjLYN0SuuiBqU&redir_esc=y#v=onepage&q=json&f=false
+Bassett, Lindsay (2015). Introduction to JavaScript Object Notation: A To-the-Point Guide to JSON
