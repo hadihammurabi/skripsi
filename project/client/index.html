@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
 
   <title>Karyawan</title>
 </head>
+
 <body>
 
   <header class="p-10 bg-blue-600 text-white">
@@ -19,12 +21,13 @@
   <div class="m-10">
 
     <div class="shadow-lg rounded">
-      
+
       <div class="p-10">
 
         <div class="flex justify-between">
           <div class="flex w-1/2">
-            <input type="text" class="w-3/4 border-2 rounded-md px-3" placeholder="Cari NIP, Nama, Departemen, atau Jabatan" />
+            <input type="text" class="w-3/4 border-2 rounded-md px-3"
+              placeholder="Cari NIP, Nama, Departemen, atau Jabatan" />
             <button class="bg-blue-500 text-white rounded-md px-3 py-2">Cari</button>
           </div>
           <div class="w-1/2 text-right">
@@ -45,25 +48,46 @@
             </tr>
           </thead>
           <tbody id="table-body">
-          <!-- 
+
             <tr>
-              <td>asdasd</td>
-              <td>asdasd</td>
-              <td>asdasd</td>
-              <td>asdasd</td>
-              <td>asdasd</td>
-              <td>asdasd</td>
+              <td>55443</td>
+              <td>Alex Under</td>
+              <td>Keuangan</td>
+              <td>Kepala</td>
+              <td>20 Maret 2023</td>
+              <td>12 Desember 2023</td>
               <td>
-                <a href="detail?id=123123123">
+                <a href="detail?id=55443">
                   <button class="bg-blue-500 text-white rounded-md px-3 py-2">Lihat</button>
                 </a>
-                <a href="ubah?id=123123123">
+                <a href="ubah?id=55443">
                   <button class="bg-green-500 text-white rounded-md px-3 py-2">Ubah</button>
                 </a>
-                <button class="bg-red-500 text-white rounded-md px-3 py-2">Hapus</button>
+                <a href="hapus?id=55443">
+                  <button class="bg-red-500 text-white rounded-md px-3 py-2">Hapus</button>
+                </a>
               </td>
-            </tr> 
-          -->
+            </tr>
+            <tr>
+              <td>56623</td>
+              <td>John Thor</td>
+              <td>HR</td>
+              <td>Kepala</td>
+              <td>20 Maret 2023</td>
+              <td>12 Desember 2023</td>
+              <td>
+                <a href="detail?id=56623">
+                  <button class="bg-blue-500 text-white rounded-md px-3 py-2">Lihat</button>
+                </a>
+                <a href="ubah?id=56623">
+                  <button class="bg-green-500 text-white rounded-md px-3 py-2">Ubah</button>
+                </a>
+                <a href="hapus?id=56623">
+                  <button class="bg-red-500 text-white rounded-md px-3 py-2">Hapus</button>
+                </a>
+              </td>
+            </tr>
+
           </tbody>
         </table>
 
@@ -78,20 +102,21 @@
   <script>
     const tableBody = document.querySelector('#table-body');
     function main() {
-      tableBody.innerHTML = messageLoading;
-      getAll()
-        .then(function(pegawais) {
-          if (pegawais.length <= 0) {
-            tableBody.innerHTML = messageEmpty;
-          }
-        })
-        .catch(err => {
-          tableBody.innerHTML = messageEmpty;
-        });
+      // tableBody.innerHTML = messageLoading;
+      // getAll()
+      //   .then(function(pegawais) {
+      //     if (pegawais.length <= 0) {
+      //       tableBody.innerHTML = messageEmpty;
+      //     }
+      //   })
+      //   .catch(err => {
+      //     tableBody.innerHTML = messageEmpty;
+      //   });
     }
 
     document.addEventListener('DOMContentLoaded', main);
   </script>
 
 </body>
+
 </html>
