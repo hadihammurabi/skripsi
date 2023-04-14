@@ -1,4 +1,4 @@
-rpc.connect('http://example.com');
+rpc.connect('http://localhost:8080');
 
 function create(newPegawai) {
   return rpc.create(newPegawai);
@@ -8,16 +8,16 @@ function getAll() {
   return rpc.getAll();
 }
 
-function getByID(id) {
-  return rpc.getByID(id);
+function getById(id) {
+  return rpc.getById(id);
 }
 
-function updateByID(id) {
-  return rpc.updateByID(id);
+function edit(id, newPegawai) {
+  return rpc.edit(id, newPegawai);
 }
 
-function deleteByID(id) {
-  return rpc.deleteByID(id);
+function del(id) {
+  return rpc.del(id);
 }
 
 const messageEmpty = `

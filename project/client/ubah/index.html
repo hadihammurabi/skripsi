@@ -21,12 +21,134 @@
     <div class="shadow-lg rounded">
       
       <div class="p-10">
+
+        <form action="" method="post">
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="nip">
+              NIP
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nip" type="text" placeholder="Nomor Induk Pegawai" required />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">
+              Nama Lengkap
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nama" type="text" required />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="departemen">
+              Departemen
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="departemen" type="text" placeholder="Bagian Instansi" required />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="jabatan">
+              Jabatan
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="jabatan" type="text" required />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="menjabat_dari">
+              Menjabat Dari <span class="text-gray-400">- Tanggal Mulai Menjabat</span>
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="menjabat_dari" type="date" required />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="menjabat_sampai">
+              Menjabat Sampai <span class="text-gray-400">- Tanggal Selesai Menjabat</span>
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="menjabat_sampai" type="date" required />
+          </div>
+
+          <div class="mb-4 flex justify-between">
+            <div class="">
+              <a id="ahapus">
+                <button type="button" class="bg-red-500 text-white rounded-md px-3 py-2">Hapus</button>
+              </a>
+            </div>
+            <div class="text-right">
+              <a href="/">
+                <button type="button" class="rounded-md px-3 py-2">Batal</button>
+              </a>
+              <button type="submit" class="bg-blue-500 text-white rounded-md px-3 py-2">Simpan</button>
+            </div>
+          </div>
+
+        </form>
+
       </div>
 
     </div>
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/gh/ngasemjs/client-javascript@4202aa1/hamjs-rpc.js"></script>
+  <script src="/_scripts/index.js"></script>
+  <script>
+    const query = new URL(location.href).searchParams;
+    const id = +query.get('id');
+    if (isNaN(id) || id <= 0) {
+      alert('Data not found');
+      location = '/';
+    }
+
+    function loadData() {
+      getById(id)
+        .then(function(pegawai) {
+          if (!pegawai) {
+            alert('Data not found');
+            location = '/';
+            return;
+          }
+
+          document.querySelector('#nip').value = pegawai.nip;
+          document.querySelector('#nama').value = pegawai.nama;
+          document.querySelector('#departemen').value = pegawai.departemen;
+          document.querySelector('#jabatan').value = pegawai.jabatan;
+          document.querySelector('#menjabat_dari').value = pegawai.menjabat_dari;
+          document.querySelector('#menjabat_sampai').value = pegawai.menjabat_sampai;
+        })
+        .catch(err => {
+          alert("Can't get data");
+          throw err;
+        });
+    }
+
+    function onSubmit(ev) {
+      ev.preventDefault();
+
+      const nip = document.querySelector('#nip').value;
+      const nama = document.querySelector('#nama').value;
+      const departemen = document.querySelector('#departemen').value;
+      const jabatan = document.querySelector('#jabatan').value;
+      const menjabat_dari = document.querySelector('#menjabat_dari').value;
+      const menjabat_sampai = document.querySelector('#menjabat_sampai').value;
+
+      edit(id, {nip, nama, departemen, jabatan, menjabat_dari, menjabat_sampai})
+        .then(function(pegawais) {
+          window.location.href = '/';
+        })
+        .catch(err => {
+          alert('Gagal menyimpan data');
+          throw err;
+        });
+    }
+
+    function main() {
+      loadData();
+
+      document.querySelector('a#ahapus').setAttribute('href', `/hapus?id=${id}`);
+      document.querySelector('form').addEventListener('submit', onSubmit);
+    }
+
+    document.addEventListener('DOMContentLoaded', main);
+  </script>
 
 </body>
 </html>

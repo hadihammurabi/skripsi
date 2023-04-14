@@ -43,11 +43,11 @@ const del = (id) => {
   const found = pegawai.findIndex(p => p.id === id);
 
   if (found >= 0) {
-    pegawai = pegawai.splice(found, 1);
+    pegawai.splice(found, 1);
     return true;
   }
 
-  return false;
+  throw new Error('not found');
 };
 
 module.exports = {

@@ -26,8 +26,8 @@
         <p class="text-gray-500">Yakin untuk melanjutkan menghapus data? Pilih lanjutkan jika yakin.</p>
 
         <div class="text-right">
-          <button class="text-black rounded-md px-3 py-2 border-2">Batal</button>
-          <button class="bg-red-500 text-white rounded-md px-3 py-2">Lanjutkan</button>
+          <a href="/" class="text-black rounded-md px-3 py-2 border-2">Batal</a>
+          <button class="bg-red-500 text-white rounded-md px-3 py-2" id="lanjutkan">Lanjutkan</button>
         </div>
       </div>
 
@@ -35,6 +35,51 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/gh/ngasemjs/client-javascript@4202aa1/hamjs-rpc.js"></script>
+  <script src="/_scripts/index.js"></script>
+  <script>
+    const query = new URL(location.href).searchParams;
+    const id = +query.get('id');
+    if (isNaN(id) || id <= 0) {
+      alert('Data not found');
+      location = '/';
+    }
+
+    function loadData() {
+      getById(id)
+        .then(function(pegawai) {
+          if (!pegawai) {
+            alert('Data not found');
+            location = '/';
+            return;
+          }
+        })
+        .catch(err => {
+          alert("Can't get data");
+          throw err;
+        });
+    }
+
+
+    function onLanjutkan() {
+      del(id)
+        .then(() => {
+          location = '/';
+        })
+        .catch(err => {
+          alert('Gagal menghapus data');
+          throw err;
+        });
+    }
+
+    function main() {
+      loadData();
+
+      document.querySelector('#lanjutkan').addEventListener('click', onLanjutkan);
+    }
+
+    document.addEventListener('DOMContentLoaded', main);
+  </script>
 
 </body>
 </html>

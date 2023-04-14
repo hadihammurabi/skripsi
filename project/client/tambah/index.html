@@ -22,7 +22,7 @@
       
       <div class="p-10">
 
-        <form>
+        <form action="" method="post">
 
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="nip">
@@ -32,10 +32,10 @@
           </div>
 
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">
               Nama Lengkap
             </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" required />
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nama" type="text" required />
           </div>
 
           <div class="mb-4">
@@ -68,7 +68,7 @@
 
           <div class="mb-4 text-right">
             <a href="/">
-              <button type="button" class="bg-red-500 text-white rounded-md px-3 py-2">Batal</button>
+              <button type="button" class="rounded-md px-3 py-2">Batal</button>
             </a>
             <button type="submit" class="bg-blue-500 text-white rounded-md px-3 py-2">Simpan</button>
           </div>
@@ -81,6 +81,35 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/gh/ngasemjs/client-javascript@4202aa1/hamjs-rpc.js"></script>
+  <script src="/_scripts/index.js"></script>
+  <script>
+    function onSubmit(ev) {
+      ev.preventDefault();
+
+      const nip = document.querySelector('#nip').value;
+      const nama = document.querySelector('#nama').value;
+      const departemen = document.querySelector('#departemen').value;
+      const jabatan = document.querySelector('#jabatan').value;
+      const menjabat_dari = document.querySelector('#menjabat_dari').value;
+      const menjabat_sampai = document.querySelector('#menjabat_sampai').value;
+
+      create({nip, nama, departemen, jabatan, menjabat_dari, menjabat_sampai})
+        .then(function(pegawais) {
+          window.location.href = '/';
+        })
+        .catch(err => {
+          alert('Gagal menyimpan data');
+          throw err;
+        });
+    }
+
+    function main() {
+      document.querySelector('form').addEventListener('submit', onSubmit);
+    }
+
+    document.addEventListener('DOMContentLoaded', main);
+  </script>
 
 </body>
 </html>
